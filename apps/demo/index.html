@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Frontend Frame - 统一的前端 UI 组件框架与设计系统 Demo"
+		/>
+		<title>Frontend Frame · 统一前端框架</title>
+		<script>
+			(function () {
+				var urlTheme = new URLSearchParams(window.location.search).get("theme");
+				if (urlTheme) {
+					localStorage.setItem("frontend-frame-theme", urlTheme);
+				}
+				var stored = localStorage.getItem("frontend-frame-theme") || "system";
+				var dark =
+					stored === "dark" ||
+					(stored === "system" &&
+						window.matchMedia("(prefers-color-scheme: dark)").matches);
+				document.documentElement.classList.toggle("dark", dark);
+				document.documentElement.style.colorScheme = dark ? "dark" : "light";
+			})();
+		</script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+	</body>
+</html>

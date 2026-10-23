@@ -1,0 +1,35 @@
+{
+	"name": "@frontend-frame/demo",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc --noEmit && vite build",
+		"preview": "vite preview",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@fontsource-variable/geist-mono": "^5.2.8",
+		"@fontsource-variable/inter": "^5.2.8",
+		"@frontend-frame/ui": "workspace:*",
+		"@tanstack/react-table": "^8.21.3",
+		"lucide-react": "^0.548.0",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
+		"react-hook-form": "^7.65.0",
+		"react-router-dom": "^7.9.4",
+		"recharts": "^2.15.4",
+		"sonner": "^2.0.7"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.16",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"@vitejs/plugin-react": "^5.0.4",
+		"tailwindcss": "^4.1.16",
+		"tailwindcss-animate": "^1.0.7",
+		"typescript": "^5.9.2",
+		"vite": "^7.3.7"
+	}
+}
