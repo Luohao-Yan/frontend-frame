@@ -25,9 +25,12 @@ pnpm dev
 默认访问地址：`http://localhost:5173`
 
 ```bash
+pnpm lint        # ESLint 检查（0 error / 0 warning）
 pnpm typecheck   # 全量类型检查
+pnpm test        # Vitest 组件测试
 pnpm build       # 构建组件库与 Demo
 pnpm preview     # 预览 Demo 生产构建
+pnpm changeset   # 生成变更集（发布前）
 ```
 
 ## 项目结构
@@ -194,7 +197,16 @@ const RouterNavLink = ({ href, ...props }: NavSidebarLinkProps) => (
 
 - llmgateway 源码按其仓库许可（核心为 AGPLv3）使用。
 - Morphic 源码基于 Apache-2.0 许可。
-- 当前仓库为内部 `UNLICENSED` 项目。对外发布或分发前，请确认上述来源的许可义务与署名要求。
+- 当前仓库为内部 `UNLICENSED` 项目。**对外发布或分发前，请确认上述来源的许可义务与署名要求。**
+- 逐组件来源清单见 [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md)，许可声明见 [`LICENSE`](./LICENSE)。
+
+## 工程基建（一期已落地）
+
+- **ESLint 9 flat config**：`pnpm lint`，0 error / 0 warning 门槛。
+- **Vitest + Testing Library**：`pnpm test`，覆盖核心组件交互与可访问性（jsdom）。
+- **husky + lint-staged**：pre-commit 自动 lint + format。
+- **changesets**：发布前用 `pnpm changeset` 生成变更集，`pnpm version-packages` 升级版本并生成 changelog。
+- **CI**：`.github/workflows/ci.yml`，包含 lint / typecheck / test / build 四道门禁。
 
 ## 开发约定
 

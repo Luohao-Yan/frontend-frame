@@ -1,5 +1,6 @@
 "use client";
 
+// @origin llm-gateway v2 (internal) - nav-sidebar
 import {
 	ChevronRightIcon,
 	PanelLeftCloseIcon,

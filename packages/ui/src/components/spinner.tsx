@@ -1,3 +1,4 @@
+// @origin Apache-2.0 / morphic (components/spinner.tsx)
 import * as React from "react";
 
 import { cn } from "../lib/utils";

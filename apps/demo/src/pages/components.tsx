@@ -4,7 +4,6 @@ import {
 	BellIcon,
 	CalendarIcon,
 	CheckIcon,
-	ChevronDownIcon,
 	CloudIcon,
 	InfoIcon,
 	Loader2Icon,

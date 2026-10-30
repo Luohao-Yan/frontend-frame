@@ -115,7 +115,6 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 
 	return (
 		<style
-			// eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
 			dangerouslySetInnerHTML={{
 				__html: Object.entries(THEMES)
 					.map(

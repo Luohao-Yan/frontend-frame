@@ -1,0 +1,14 @@
+# License
+
+本项目（`@frontend-frame/ui` 及 `apps/demo`）当前为**内部专有项目**，标注为 `UNLICENSED`，**仅限组织内部使用**。
+
+本项目的一部分组件派生自以下开源项目，对外使用或分发前必须遵守对应上游许可与署名义务：
+
+- **llmgateway** — 核心为 **AGPLv3**
+- **Morphic** — **Apache-2.0**
+- **llm-gateway v2** — 内部派生
+
+详细逐组件来源与许可清单，请参见 [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md)。
+
+> ⚠️ **对外发布或分发前，必须经法务复核。**
+> 尤其注意：AGPLv3 派生代码若通过网络对外提供服务，将触发 AGPLv3 的传播义务。在未经合规评估前，请勿对外分发本项目或相关派生组件。

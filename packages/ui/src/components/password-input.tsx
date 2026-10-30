@@ -1,6 +1,7 @@
 "use client";
 
 import { EyeIcon, EyeOffIcon } from "lucide-react";
+// @origin Apache-2.0 / morphic (components/ui/password-input.tsx)
 import * as React from "react";
 
 import { cn } from "../lib/utils";

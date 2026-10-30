@@ -9,3 +9,5 @@ dist/
 .chrome-*
 .screenshot-*
 *.log
+coverage/
+.husky/_/
