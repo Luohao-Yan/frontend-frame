@@ -23,6 +23,17 @@
   password-input, process-header, process-rail, source-favicons, spinner,
   status-indicator, theme-menu-items, theme-toggle, tool-badge, tooltip-button
 
+## 来源：fde-workspace（Apache-2.0）
+
+以下主题与组件派生自 `D:/develop/fde-workspace/frontend`（Next.js / Tailwind v4 / Radix，Apache-2.0），按 Apache-2.0 使用。相应文件头部已标注 `@origin Apache-2.0 / fde-workspace`。
+
+- 多主题令牌：`packages/ui/src/styles/themes/*.css`（11 套：astro-vista, claude,
+  glass, light-green, mono, neobrutualism, notebook, supabase, vercel,
+  whatsapp, zen），抽取自 fde 的 `src/styles/themes/*.css`（仅令牌块，不含
+  应用专属布局规则）
+- active-theme（ActiveThemeProvider / useActiveTheme / THEMES）
+- theme-selector（ThemeSelector）
+
 ## 来源：llm-gateway v2（内部项目）
 
 以下组件抽取自 llm-gateway v2 的左侧菜单，属内部派生。

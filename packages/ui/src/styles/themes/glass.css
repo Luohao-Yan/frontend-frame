@@ -1,0 +1,113 @@
+/* @origin Apache-2.0 / fde-workspace (src/styles/themes/glass.css) */
+[data-theme="glass"] {
+	--background: #f7f7f8;
+	--foreground: #202124;
+	--card: #ffffff;
+	--card-foreground: #202124;
+	--popover: rgb(250 250 250 / 0.96);
+	--popover-foreground: #252629;
+	--primary: #202124;
+	--primary-foreground: #ffffff;
+	--secondary: rgb(17 24 39 / 0.05);
+	--secondary-foreground: #202124;
+	--muted: #f3f4f6;
+	--muted-foreground: #686b70;
+	--accent: oklch(0% 0 0 / 0.07);
+	--accent-foreground: #202124;
+	--destructive: #b4433c;
+	--destructive-foreground: #ffffff;
+	--border: rgb(17 24 39 / 0.09);
+	--input: rgb(17 24 39 / 0.1);
+	--ring: oklch(30% 0.006 240);
+	--chart-1: oklch(65% 0.06 240);
+	--chart-2: #13795b;
+	--chart-3: #956313;
+	--chart-4: #1769e0;
+	--chart-5: #b4433c;
+	--sidebar: rgb(251 251 251 / 0.94);
+	--sidebar-foreground: #202124;
+	--sidebar-primary: #202124;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: rgb(0 0 0 / 0.07);
+	--sidebar-accent-foreground: #202124;
+	--sidebar-border: rgb(17 24 39 / 0.08);
+	--sidebar-ring: oklch(30% 0.006 240);
+	--font-sans:
+		Geist, "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei UI",
+		-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--font-serif: Georgia, serif;
+	--font-mono:
+		"Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+		monospace;
+	--radius: 0.625rem;
+	--shadow-2xs: 0 1px 2px rgb(15 23 42 / 0.05);
+	--shadow-xs: 0 1px 2px rgb(15 23 42 / 0.06);
+	--shadow-sm:
+		0 1px 2px rgb(15 23 42 / 0.06), 0 1px 3px -1px rgb(15 23 42 / 0.05);
+	--shadow: 0 0 0 1px rgb(17 24 39 / 0.06), 0 4px 12px -4px rgb(15 23 42 / 0.1);
+	--shadow-md:
+		0 0 0 1px rgb(17 24 39 / 0.06), 0 8px 20px -6px rgb(15 23 42 / 0.12);
+	--shadow-lg:
+		0 20px 40px rgb(15 23 42 / 0.08), 0 8px 16px rgb(15 23 42 / 0.04),
+		0 2px 4px rgb(15 23 42 / 0.02);
+	--shadow-xl:
+		0 20px 40px rgb(15 23 42 / 0.1), 0 12px 24px -6px rgb(15 23 42 / 0.08);
+	--shadow-2xl: 0 24px 70px rgb(15 23 42 / 0.14);
+	--tracking-normal: 0em;
+	--spacing: 0.25rem;
+}
+[data-theme="glass"].dark {
+	--background: #161618;
+	--foreground: #f1f1f1;
+	--card: #202020;
+	--card-foreground: #f1f1f1;
+	--popover: rgb(34 34 34 / 0.94);
+	--popover-foreground: #f1f1f1;
+	--primary: #f1f1f1;
+	--primary-foreground: #202020;
+	--secondary: rgb(255 255 255 / 0.07);
+	--secondary-foreground: #f1f1f1;
+	--muted: #292929;
+	--muted-foreground: #a4a4a8;
+	--accent: oklch(100% 0 0 / 0.08);
+	--accent-foreground: #f1f1f1;
+	--destructive: #ef8b85;
+	--destructive-foreground: #202020;
+	--border: rgb(255 255 255 / 0.1);
+	--input: rgb(255 255 255 / 0.11);
+	--ring: oklch(98% 0.001 240);
+	--chart-1: oklch(75% 0.06 240);
+	--chart-2: #70d9ac;
+	--chart-3: #e5bb69;
+	--chart-4: #5e9cff;
+	--chart-5: #ef8b85;
+	--sidebar: rgb(24 24 24 / 0.94);
+	--sidebar-foreground: #f1f1f1;
+	--sidebar-primary: #f1f1f1;
+	--sidebar-primary-foreground: #202020;
+	--sidebar-accent: rgb(255 255 255 / 0.08);
+	--sidebar-accent-foreground: #f1f1f1;
+	--sidebar-border: rgb(255 255 255 / 0.09);
+	--sidebar-ring: oklch(98% 0.001 240);
+	--font-sans:
+		Geist, "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei UI",
+		-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--font-serif: Georgia, serif;
+	--font-mono:
+		"Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+		monospace;
+	--radius: 0.625rem;
+	--shadow-2xs: 0 1px 2px rgb(0 0 0 / 0.18);
+	--shadow-xs: 0 1px 2px rgb(0 0 0 / 0.2);
+	--shadow-sm: 0 1px 2px rgb(0 0 0 / 0.22), 0 1px 3px -1px rgb(0 0 0 / 0.18);
+	--shadow:
+		0 0 0 1px rgb(255 255 255 / 0.07), 0 4px 12px -4px rgb(0 0 0 / 0.24);
+	--shadow-md:
+		0 0 0 1px rgb(255 255 255 / 0.07), 0 8px 20px -6px rgb(0 0 0 / 0.28);
+	--shadow-lg: 0 20px 40px rgb(0 0 0 / 0.3), 0 8px 16px rgb(0 0 0 / 0.18);
+	--shadow-xl:
+		0 20px 40px rgb(0 0 0 / 0.34), 0 12px 24px -6px rgb(0 0 0 / 0.22);
+	--shadow-2xl: 0 24px 70px rgb(0 0 0 / 0.5);
+	--tracking-normal: 0em;
+	--spacing: 0.25rem;
+}

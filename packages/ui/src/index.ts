@@ -1,4 +1,5 @@
 export * from "./components/accordion";
+export * from "./components/active-theme";
 export * from "./components/alert";
 export * from "./components/alert-dialog";
 export * from "./components/avatar";
@@ -55,6 +56,7 @@ export * from "./components/tabs";
 export * from "./components/textarea";
 export * from "./components/theme-provider";
 export * from "./components/theme-menu-items";
+export * from "./components/theme-selector";
 export * from "./components/theme-toggle";
 export * from "./components/toast";
 export * from "./components/toaster";

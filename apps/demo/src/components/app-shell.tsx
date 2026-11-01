@@ -35,6 +35,7 @@ import {
 	NavSidebar,
 	Separator,
 	SonnerToaster,
+	ThemeSelector,
 	ThemeToggle,
 	cn,
 } from "@frontend-frame/ui";
@@ -208,6 +209,7 @@ export function AppShell() {
 							>
 								<SearchIcon className="size-4" />
 							</Button>
+							<ThemeSelector />
 							<ThemeToggle />
 							<Button
 								variant="ghost"

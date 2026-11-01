@@ -1,5 +1,18 @@
 @custom-variant dark (&:is(.dark *));
 
+/* 多主题令牌（来自 fde-workspace，Apache-2.0）：active-theme 设置 <html data-theme> 后生效 */
+@import "./styles/themes/astro-vista.css";
+@import "./styles/themes/claude.css";
+@import "./styles/themes/glass.css";
+@import "./styles/themes/light-green.css";
+@import "./styles/themes/mono.css";
+@import "./styles/themes/neobrutualism.css";
+@import "./styles/themes/notebook.css";
+@import "./styles/themes/supabase.css";
+@import "./styles/themes/vercel.css";
+@import "./styles/themes/whatsapp.css";
+@import "./styles/themes/zen.css";
+
 :root {
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.141 0.005 285.823);

@@ -14,6 +14,9 @@ import {
 	TabsContent,
 	TabsList,
 	TabsTrigger,
+	THEMES,
+	ThemeSelector,
+	useActiveTheme,
 } from "@frontend-frame/ui";
 
 import { CodeBlock, Section } from "@/components/showcase";
@@ -57,6 +60,48 @@ function ColorSwatch({
 					--{name}
 				</p>
 			</div>
+		</div>
+	);
+}
+
+function ActiveThemeShowcase() {
+	const { activeTheme } = useActiveTheme();
+	const active = THEMES.find((t) => t.value === activeTheme) ?? THEMES[0];
+
+	return (
+		<div className="space-y-4">
+			<div className="flex flex-wrap items-center justify-between gap-3">
+				<div>
+					<p className="text-sm font-medium">当前主题：{active.name}</p>
+					<p className="text-muted-foreground text-xs">
+						作用于整个页面，配合右上角明暗开关体验 dark 变体
+					</p>
+				</div>
+				<ThemeSelector />
+			</div>
+			<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+				{THEMES.map((theme) => (
+					<ActiveThemeSwatch key={theme.value} theme={theme.value} />
+				))}
+			</div>
+		</div>
+	);
+}
+
+function ActiveThemeSwatch({ theme }: { theme: string }) {
+	return (
+		<div
+			data-theme={theme}
+			className="bg-background text-foreground rounded-lg border p-2"
+		>
+			<div className="bg-card space-y-1 rounded-md border p-2">
+				<div className="bg-primary size-6 rounded" />
+				<div className="bg-foreground/80 h-1.5 w-14 rounded" />
+				<div className="bg-muted-foreground/40 h-1.5 w-10 rounded" />
+			</div>
+			<span className="text-muted-foreground mt-1.5 block text-[10px]">
+				{theme}
+			</span>
 		</div>
 	);
 }
@@ -171,6 +216,13 @@ export function TokensPage() {
 						</div>
 					</TabsContent>
 				</Tabs>
+			</Section>
+
+			<Section
+				title="多主题"
+				description="由 fde-workspace 移植的 11 套主题，通过 data-theme 切换；明暗随系统/右上角开关联动"
+			>
+				<ActiveThemeShowcase />
 			</Section>
 
 			<Section

@@ -35,3 +35,10 @@ if (!window.getComputedStyle) {
 		}),
 	});
 }
+
+// Radix Select needs scrollIntoView which jsdom does not implement
+if (!window.HTMLElement.prototype.scrollIntoView) {
+	Object.defineProperty(window.HTMLElement.prototype, "scrollIntoView", {
+		value: () => {},
+	});
+}
