@@ -1,6 +1,8 @@
 // @origin AGPLv3 / llmgateway (apps/ui/src/lib/components/button.tsx)
+//         Apache-2.0 / fde-workspace (components/ui/button.tsx) — isLoading 增强
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { Loader2 } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "../lib/utils";
@@ -41,19 +43,55 @@ function Button({
 	variant,
 	size,
 	asChild = false,
+	isLoading,
+	children,
+	disabled,
 	...props
 }: React.ComponentProps<"button"> &
 	VariantProps<typeof buttonVariants> & {
 		asChild?: boolean;
+		isLoading?: boolean;
 	}) {
 	const Comp = asChild ? Slot : "button";
+
+	if (isLoading === undefined) {
+		return (
+			<Comp
+				data-slot="button"
+				className={cn(buttonVariants({ variant, size, className }))}
+				disabled={disabled}
+				{...props}
+			>
+				{children}
+			</Comp>
+		);
+	}
 
 	return (
 		<Comp
 			data-slot="button"
 			className={cn(buttonVariants({ variant, size, className }))}
+			disabled={disabled || isLoading}
+			aria-busy={isLoading || undefined}
 			{...props}
-		/>
+		>
+			<span
+				className={cn(
+					"inline-flex items-center gap-2",
+					isLoading && "invisible",
+				)}
+			>
+				{children}
+			</span>
+			<span
+				className={cn(
+					"flex items-center justify-center",
+					!isLoading && "invisible",
+				)}
+			>
+				<Loader2 className="size-4 animate-spin" />
+			</span>
+		</Comp>
 	);
 }
 

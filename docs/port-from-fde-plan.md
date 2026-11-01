@@ -1,6 +1,6 @@
 # fde-workspace → frontend-frame 组件与主题移植方案（v1）
 
-> 状态：一期/二期/三期（组件移植 + 主题系统）已落地，四期待推进
+> 状态：一期/二期/三期/四期（组件移植、主题系统、AI 业务件）已全部落地
 > 来源项目：`D:/develop/fde-workspace/frontend`（Next.js 16 + Tailwind v4 + Radix，Apache-2.0）
 > 目标项目：`D:/develop/frontend-frame`（React 19 + Vite + Tailwind v4 + Radix，`UNLICENSED` 内部）
 > 版本：@frontend-frame/ui 0.1.0 → 0.2.0

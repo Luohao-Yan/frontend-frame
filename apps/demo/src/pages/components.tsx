@@ -166,6 +166,16 @@ import {
 	Loading,
 	Modal,
 	DataTableSkeleton,
+	StreamingText,
+	Thinking,
+	PixelGridLoader,
+	ApprovalCard,
+	NotificationCard,
+	Frame,
+	FramePanel,
+	FrameHeader,
+	FrameTitle,
+	FrameDescription,
 	cn,
 } from "@frontend-frame/ui";
 
@@ -1085,7 +1095,100 @@ export function ComponentsPage() {
 					</p>
 				</DemoCard>
 			</Section>
+
+			<Section
+				title="AI 组件 AI Components"
+				description="由 fde-workspace 移植的 AI/业务域高级件（Apache-2.0）"
+			>
+				<DemoCard
+					title="StreamingText"
+					description="流式文本气泡（思考态/完成态/来源折叠/追问）"
+				>
+					<PipedStreamingText />
+				</DemoCard>
+
+				<DemoCard
+					title="Thinking"
+					description="Agent 思考过程 trace（reasoning 变体）"
+				>
+					<Thinking
+						variant="reasoning"
+						status="done"
+						text="正在检索可能相关的文档片段……"
+						startedAt={Date.now() - 12000}
+					/>
+				</DemoCard>
+
+				<DemoCard title="PixelGridLoader" description="9 格点阵波浪加载态">
+					<PixelGridLoader label="正在深入思考" />
+				</DemoCard>
+
+				<DemoCard title="ApprovalCard" description="human-in-the-loop 审批卡">
+					<ApprovalCard
+						title="审批请求"
+						questions={[
+							{
+								q: "是否允许执行此操作？",
+								type: "radio",
+								options: ["允许", "拒绝"],
+							},
+							{
+								q: "请选择风险等级",
+								type: "radio",
+								options: ["低风险", "中风险", "高风险"],
+							},
+						]}
+					/>
+				</DemoCard>
+
+				<DemoCard
+					title="NotificationCard"
+					description="通知卡片（未读/操作/相对时间）"
+				>
+					<NotificationCard
+						id="n1"
+						title="新评论"
+						body="有人回复了你的评论：写得不错！"
+						createdAt={new Date(Date.now() - 5 * 60 * 1000)}
+						actions={[
+							{ id: "a1", label: "查看", type: "redirect" },
+							{ id: "a2", label: "忽略", type: "api_call" },
+						]}
+					/>
+				</DemoCard>
+
+				<DemoCard title="Frame" description="多面板容器（面板化布局）">
+					<Frame>
+						<FramePanel>
+							<FrameHeader>
+								<FrameTitle>概览</FrameTitle>
+								<FrameDescription>框架说明文字</FrameDescription>
+							</FrameHeader>
+						</FramePanel>
+						<FramePanel>
+							<p className="text-muted-foreground text-sm">
+								第二个面板的内容。
+							</p>
+						</FramePanel>
+					</Frame>
+				</DemoCard>
+			</Section>
 		</div>
+	);
+}
+
+function PipedStreamingText() {
+	return (
+		<StreamingText
+			text="这是流式输出的演示。可切换 phase 观察思考态与完成态。"
+			phase="done"
+			model="gpt-4o"
+			sources={[
+				{ name: "前端框架文档", domain: "docs.example.com", href: "#" },
+				{ name: "TanStack Table", domain: "tanstack.com", href: "#" },
+			]}
+			followUps={["还有什么可优化的？", "怎么加主题？"]}
+		/>
 	);
 }
 

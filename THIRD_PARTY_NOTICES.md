@@ -42,6 +42,9 @@
   data-table-skeleton, data-table-toolbar, data-table-view-options,
   data-table-faceted-filter, data-table-date-filter, data-table-slider-filter
 - utils：formatDate（取自 fde `lib/format.ts`）
+- 四期 AI/业务件：streaming-text, thinking, pixel-grid-loader, approval-card,
+  notification-card, frame（loading/kbd 已在前几期移植）
+- button 增加 isLoading（源自 fde button.tsx）
 
 ## 来源：llm-gateway v2（内部项目）
 
