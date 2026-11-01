@@ -37,6 +37,11 @@
   pagination, resizable, toggle-group, aspect-ratio
 - hooks：use-debounce, use-mounted, use-media-query, use-controllable-state,
   use-callback-ref, use-debounced-callback, use-elapsed
+- 二期增强件：button-group, input-group, loading（含 loading-bounce 动画）、modal
+- 二期表格子件：data-table-column-header, data-table-pagination,
+  data-table-skeleton, data-table-toolbar, data-table-view-options,
+  data-table-faceted-filter, data-table-date-filter, data-table-slider-filter
+- utils：formatDate（取自 fde `lib/format.ts`）
 
 ## 来源：llm-gateway v2（内部项目）
 

@@ -215,6 +215,45 @@
 	}
 }
 
+/* Loading —— 双方块交替弹跳（参考 CSS Loaders #11）
+   颜色走主题令牌：currentColor，投影用 color-mix 派生。 */
+@utility loading-bounce {
+	position: relative;
+	width: 50px;
+	perspective: 200px;
+
+	&::before,
+	&::after {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		content: "";
+		animation: loading-bounce 0.5s infinite alternate;
+		background: color-mix(in srgb, currentColor 85%, transparent);
+	}
+
+	&::before {
+		left: 0;
+	}
+
+	&::after {
+		right: 0;
+		animation-delay: 0.15s;
+	}
+}
+
+@keyframes loading-bounce {
+	0% {
+		transform: scale(1) translateY(0) rotateX(0);
+		box-shadow: 0 0 color-mix(in srgb, currentColor 0%, transparent);
+	}
+	to {
+		transform: scale(1.2) translateY(-25px) rotateX(45deg);
+		background: currentColor;
+		box-shadow: 0 25px 40px color-mix(in srgb, currentColor 30%, transparent);
+	}
+}
+
 @utility bg-grid {
 	background-image:
 		linear-gradient(

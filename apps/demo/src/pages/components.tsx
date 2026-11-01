@@ -155,6 +155,17 @@ import {
 	ResizablePanelGroup,
 	ToggleGroup,
 	ToggleGroupItem,
+	ButtonGroup,
+	ButtonGroupSeparator,
+	ButtonGroupText,
+	InputGroup,
+	InputGroupAddon,
+	InputGroupButton,
+	InputGroupInput,
+	InputGroupText,
+	Loading,
+	Modal,
+	DataTableSkeleton,
 	cn,
 } from "@frontend-frame/ui";
 
@@ -1012,7 +1023,88 @@ export function ComponentsPage() {
 					</ResizablePanelGroup>
 				</DemoCard>
 			</Section>
+
+			<Section
+				title="增强件 Enhancements"
+				description="由 fde-workspace 移植的通用增强件与表格子件（Apache-2.0）"
+			>
+				<DemoCard
+					title="Button Group"
+					description="按钮组（水平/垂直、圆角合并）"
+				>
+					<ButtonGroup>
+						<Button variant="outline" size="sm">
+							左
+						</Button>
+						<ButtonGroupSeparator />
+						<Button variant="outline" size="sm">
+							中
+						</Button>
+						<ButtonGroupSeparator />
+						<ButtonGroupText>右</ButtonGroupText>
+					</ButtonGroup>
+				</DemoCard>
+
+				<DemoCard title="Input Group" description="带前缀/后缀的输入组合">
+					<InputGroup className="max-w-sm">
+						<InputGroupAddon align="inline-start">
+							<InputGroupText>￥</InputGroupText>
+						</InputGroupAddon>
+						<InputGroupInput placeholder="金额" />
+						<InputGroupAddon align="inline-end">
+							<InputGroupButton aria-label="提交">提交</InputGroupButton>
+						</InputGroupAddon>
+					</InputGroup>
+				</DemoCard>
+
+				<DemoCard title="Loading" description="双方块交替弹跳加载态">
+					<Loading inline color="text-primary" />
+					<div className="mt-2 h-24 rounded-md border">
+						<Loading />
+					</div>
+				</DemoCard>
+
+				<DemoCard title="Modal" description="轻量对话框封装">
+					<PipedModal />
+				</DemoCard>
+
+				<DemoCard title="DataTableSkeleton" description="表格骨架屏">
+					<DataTableSkeleton
+						columnCount={4}
+						rowCount={3}
+						withPagination={false}
+					/>
+				</DemoCard>
+
+				<DemoCard
+					title="DataTablePagination"
+					description="由现有表格状态驱动的分页条"
+				>
+					<p className="text-muted-foreground text-sm">
+						需配合 useReactTable 使用；完整示例见 数据表 页。
+					</p>
+				</DemoCard>
+			</Section>
 		</div>
+	);
+}
+
+function PipedModal() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button size="sm" onClick={() => setOpen(true)}>
+				打开弹窗
+			</Button>
+			<Modal
+				title="确认操作"
+				description="此操作不可撤销，是否继续？"
+				isOpen={open}
+				onClose={() => setOpen(false)}
+			>
+				<p className="text-muted-foreground text-sm">这里是弹窗内容。</p>
+			</Modal>
+		</>
 	);
 }
 

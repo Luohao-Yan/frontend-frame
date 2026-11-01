@@ -1,7 +1,6 @@
 "use client";
 
 import {
-	ArrowUpDown,
 	ChevronLeft,
 	ChevronRight,
 	ChevronsLeft,
@@ -40,7 +39,6 @@ import {
 import { cn } from "../lib/utils";
 
 import type {
-	Column,
 	ColumnDef,
 	ColumnFiltersState,
 	SortingState,
@@ -259,31 +257,5 @@ export function DataTable<TData, TValue>({
 				</div>
 			</div>
 		</div>
-	);
-}
-
-export function DataTableColumnHeader<TData, TValue>({
-	column,
-	title,
-	className,
-}: {
-	column: Column<TData, TValue>;
-	title: string;
-	className?: string;
-}) {
-	if (!column.getCanSort()) {
-		return <span className={className}>{title}</span>;
-	}
-
-	return (
-		<Button
-			variant="ghost"
-			size="sm"
-			className={cn("-ml-2 h-8 data-[state=open]:bg-accent", className)}
-			onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-		>
-			{title}
-			<ArrowUpDown className="size-3.5" />
-		</Button>
 	);
 }
