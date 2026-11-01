@@ -33,6 +33,10 @@
   应用专属布局规则）
 - active-theme（ActiveThemeProvider / useActiveTheme / THEMES）
 - theme-selector（ThemeSelector）
+- 一期组件：breadcrumb, context-menu, date-picker, input-otp, kbd, menubar,
+  pagination, resizable, toggle-group, aspect-ratio
+- hooks：use-debounce, use-mounted, use-media-query, use-controllable-state,
+  use-callback-ref, use-debounced-callback, use-elapsed
 
 ## 来源：llm-gateway v2（内部项目）
 

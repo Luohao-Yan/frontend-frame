@@ -122,6 +122,39 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 	TooltipButton,
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+	DatePicker,
+	InputOTP,
+	InputOTPGroup,
+	InputOTPSlot,
+	InputOTPSeparator,
+	Kbd,
+	KbdGroup,
+	Menubar,
+	MenubarContent,
+	MenubarItem,
+	MenubarMenu,
+	MenubarRadioGroup,
+	MenubarRadioItem,
+	MenubarSeparator,
+	MenubarTrigger,
+	Pagination,
+	PaginationContent,
+	PaginationEllipsis,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+	ResizableHandle,
+	ResizablePanel,
+	ResizablePanelGroup,
+	ToggleGroup,
+	ToggleGroupItem,
 	cn,
 } from "@frontend-frame/ui";
 
@@ -862,6 +895,132 @@ export function ComponentsPage() {
 					</DemoCard>
 				</div>
 			</Section>
+
+			<Section
+				title="新移植组件 Ported"
+				description="由 fde-workspace 移植的 shadcn 标准件与 hooks（Apache-2.0）"
+			>
+				<DemoCard title="Breadcrumb" description="面包屑导航">
+					<Breadcrumb>
+						<BreadcrumbList>
+							<BreadcrumbItem>
+								<BreadcrumbLink href="/">首页</BreadcrumbLink>
+							</BreadcrumbItem>
+							<BreadcrumbSeparator />
+							<BreadcrumbItem>
+								<BreadcrumbLink href="/components">组件</BreadcrumbLink>
+							</BreadcrumbItem>
+							<BreadcrumbSeparator />
+							<BreadcrumbItem>
+								<BreadcrumbPage>当前页</BreadcrumbPage>
+							</BreadcrumbItem>
+						</BreadcrumbList>
+					</Breadcrumb>
+				</DemoCard>
+
+				<DemoCard title="Pagination" description="分页导航">
+					<Pagination>
+						<PaginationContent>
+							<PaginationItem>
+								<PaginationPrevious href="#" />
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationLink href="#" isActive>
+									1
+								</PaginationLink>
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationLink href="#">2</PaginationLink>
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationEllipsis />
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationNext href="#" />
+							</PaginationItem>
+						</PaginationContent>
+					</Pagination>
+				</DemoCard>
+
+				<DemoCard title="Kbd" description="键盘按键标识">
+					<div className="flex flex-wrap items-center gap-4">
+						<KbdGroup>
+							<Kbd>⌘</Kbd>
+							<Kbd>K</Kbd>
+						</KbdGroup>
+						<span className="text-muted-foreground text-sm">打开命令面板</span>
+					</div>
+				</DemoCard>
+
+				<DemoCard title="Toggle Group" description="按钮组单选/多选">
+					<ToggleGroup type="single">
+						<ToggleGroupItem value="a">A</ToggleGroupItem>
+						<ToggleGroupItem value="b">B</ToggleGroupItem>
+						<ToggleGroupItem value="c">C</ToggleGroupItem>
+					</ToggleGroup>
+				</DemoCard>
+
+				<DemoCard title="Input OTP" description="一次性验证码输入">
+					<InputOTP maxLength={6}>
+						<InputOTPGroup>
+							<InputOTPSlot index={0} />
+							<InputOTPSlot index={1} />
+							<InputOTPSlot index={2} />
+						</InputOTPGroup>
+						<InputOTPSeparator />
+						<InputOTPGroup>
+							<InputOTPSlot index={3} />
+							<InputOTPSlot index={4} />
+							<InputOTPSlot index={5} />
+						</InputOTPGroup>
+					</InputOTP>
+				</DemoCard>
+
+				<DemoCard title="Date Picker" description="统一日期选择（YYYY-MM-DD）">
+					<PipedDatePicker />
+				</DemoCard>
+
+				<DemoCard title="Menubar" description="顶部菜单栏">
+					<Menubar>
+						<MenubarMenu>
+							<MenubarTrigger>文件</MenubarTrigger>
+							<MenubarContent>
+								<MenubarItem>新建</MenubarItem>
+								<MenubarItem>打开</MenubarItem>
+								<MenubarSeparator />
+								<MenubarRadioGroup value="a">
+									<MenubarRadioItem value="a">浅色</MenubarRadioItem>
+									<MenubarRadioItem value="b">深色</MenubarRadioItem>
+								</MenubarRadioGroup>
+							</MenubarContent>
+						</MenubarMenu>
+					</Menubar>
+				</DemoCard>
+
+				<DemoCard title="Resizable" description="可拖拽调整面板">
+					<ResizablePanelGroup
+						direction="horizontal"
+						className="max-w-full rounded-lg border"
+					>
+						<ResizablePanel defaultSize={50} className="p-3">
+							<p className="text-sm">左侧面板</p>
+						</ResizablePanel>
+						<ResizableHandle withHandle />
+						<ResizablePanel defaultSize={50} className="p-3">
+							<p className="text-sm">右侧面板</p>
+						</ResizablePanel>
+					</ResizablePanelGroup>
+				</DemoCard>
+			</Section>
+		</div>
+	);
+}
+
+function PipedDatePicker() {
+	const [value, setValue] = React.useState("");
+	return (
+		<div className="flex max-w-sm items-center gap-2">
+			<DatePicker value={value} onChange={setValue} className="flex-1" />
 		</div>
 	);
 }
