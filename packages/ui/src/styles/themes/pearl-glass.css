@@ -1,0 +1,244 @@
+/* Pearl Glass（珍珠玻璃）主题
+   移植自 scaffold-master/DESIGN.md + scaffold-vue/src/styles/tokens.css。
+   浅/深两态同一套语义；玻璃只用于材质层级，不降低表格与正文可读性。 */
+[data-theme="pearl-glass"] {
+	--background: #f6f8f7;
+	--foreground: #101418;
+	--card: #fbfcfc;
+	--card-foreground: #101418;
+	--popover: rgb(246 248 247 / 0.86);
+	--popover-foreground: #101418;
+	--primary: #236de9;
+	--primary-foreground: #ffffff;
+	--secondary: rgb(46 58 62 / 0.05);
+	--secondary-foreground: #101418;
+	--muted: #f0f3f2;
+	--muted-foreground: #596368;
+	--accent: rgb(46 58 62 / 0.045);
+	--accent-foreground: #101418;
+	--destructive: #e0443b;
+	--destructive-foreground: #ffffff;
+	--border: rgb(46 58 62 / 0.085);
+	--input: rgb(46 58 62 / 0.1);
+	--ring: rgb(35 109 233 / 0.8);
+	--chart-1: #3a7ace;
+	--chart-2: #58a021;
+	--chart-3: #ba8c34;
+	--chart-4: #7a60cc;
+	--chart-5: #c85a76;
+	--surface-elevated: #ffffff;
+	--sidebar: rgb(250 251 250 / 0.92);
+	--sidebar-foreground: #101418;
+	--sidebar-primary: #236de9;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: rgb(46 58 62 / 0.045);
+	--sidebar-accent-foreground: #101418;
+	--sidebar-border: rgb(46 58 62 / 0.085);
+	--sidebar-ring: rgb(35 109 233 / 0.8);
+	--font-sans:
+		"SF Pro Display", "SF Pro Text", "PingFang SC", -apple-system,
+		BlinkMacSystemFont, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+	--font-serif: Georgia, serif;
+	--font-mono:
+		ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+	--radius: 0.75rem;
+	--shadow-2xs: 0 1px 2px rgb(46 58 62 / 0.04);
+	--shadow-xs: 0 1px 2px rgb(46 58 62 / 0.05);
+	--shadow-sm: 0 1px 2px rgb(46 58 62 / 0.05), 0 5px 14px rgb(46 58 62 / 0.04);
+	--shadow: 0 0 0 1px rgb(46 58 62 / 0.06), 0 1px 2px rgb(46 58 62 / 0.05);
+	--shadow-md:
+		0 1px 3px rgb(46 58 62 / 0.06), 0 12px 30px rgb(46 58 62 / 0.055);
+	--shadow-lg: 0 2px 6px rgb(46 58 62 / 0.07), 0 22px 50px rgb(46 58 62 / 0.08);
+	--shadow-xl: 0 2px 8px rgb(46 58 62 / 0.08), 0 28px 64px rgb(46 58 62 / 0.1);
+	--shadow-2xl:
+		0 4px 12px rgb(46 58 62 / 0.1), 0 40px 90px rgb(46 58 62 / 0.14);
+	--tracking-normal: 0em;
+	--spacing: 0.25rem;
+
+	/* 仪器化扩展令牌（珍珠玻璃独有，其他主题用 CSS fallback） */
+	--ink: #101418;
+	--ink-muted: #596368;
+	--ink-soft: #7e888c;
+	--ink-faint: #99a2a5;
+	--lime: #82dd2d;
+	--lime-text: #58a021;
+	--red-text: #e0443b;
+	--e1: 0 1px 2px rgb(46 58 62 / 0.05), 0 5px 14px rgb(46 58 62 / 0.04);
+	--e2: 0 1px 3px rgb(46 58 62 / 0.06), 0 12px 30px rgb(46 58 62 / 0.055);
+	--e3: 0 2px 6px rgb(46 58 62 / 0.07), 0 22px 50px rgb(46 58 62 / 0.08);
+	--line: rgb(46 58 62 / 0.085);
+	--line-strong: rgb(46 58 62 / 0.11);
+	--glass-line: rgb(255 255 255 / 0.88);
+	--hatch-ink: rgb(46 58 62 / 0.16);
+	--tick: rgb(46 58 62 / 0.22);
+	--tick-strong: rgb(46 58 62 / 0.5);
+	--plate-bg: rgb(21 24 26 / 0.9);
+	--plate-line: rgb(255 255 255 / 0.1);
+	--plate-ink: #f2f5f4;
+	--plate-soft: rgb(255 255 255 / 0.56);
+	--cat-1-bg: #f6e7c4;
+	--cat-1-ink: #7a5a16;
+	--cat-2-bg: #d7e7fb;
+	--cat-2-ink: #275a96;
+	--cat-3-bg: #e4dcf7;
+	--cat-3-ink: #5b4597;
+	--cat-4-bg: #f7dce1;
+	--cat-4-ink: #94384c;
+	--cat-5-bg: #d8f0dc;
+	--cat-5-ink: #2d7140;
+	--stage: #dfe3e2;
+	--frame: #17191d;
+	--canvas: #f6f8f7;
+	--rail-bg: rgb(250 251 250 / 0.92);
+	--pill-bg: linear-gradient(
+		145deg,
+		rgb(255 255 255 / 0.93),
+		rgb(246 251 249 / 0.62)
+	);
+	--pill-inset: inset 0 -1px 0 rgb(105 122 128 / 0.08);
+	--float-bg: rgb(246 248 247 / 0.86);
+	--float-inset:
+		inset 0 0 0 1px rgb(120 132 135 / 0.13),
+		inset 0 1px 0 rgb(255 255 255 / 0.72);
+	--surface: linear-gradient(
+		145deg,
+		rgb(255 255 255 / 0.97),
+		rgb(249 252 251 / 0.93)
+	);
+	--surface-solid: #fbfcfc;
+	--groove-bg: rgb(225 231 229 / 0.5);
+	--groove-inset: inset 0 1px 0 rgb(255 255 255 / 0.46);
+	--input-bg: rgb(255 255 255 / 0.78);
+	--hover-bg: rgb(46 58 62 / 0.045);
+	--press-bg: rgb(46 58 62 / 0.075);
+	--overlay: rgb(16 20 24 / 0.26);
+	--dark-surface: #131619;
+	--fs-display-xl: 56px;
+	--fs-display-l: 40px;
+	--fs-display-m: 28px;
+	--track-eyebrow: 0.14em;
+	--control-h: 36px;
+	--control-h-sm: 30px;
+	--row-h: 48px;
+	--cell-px: 16px;
+	--ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="pearl-glass"].dark {
+	--background: #121517;
+	--foreground: #eef2f1;
+	--card: #1b1f21;
+	--card-foreground: #eef2f1;
+	--popover: rgb(30 34 37 / 0.9);
+	--popover-foreground: #eef2f1;
+	--primary: #4c8dff;
+	--primary-foreground: #101418;
+	--secondary: rgb(255 255 255 / 0.05);
+	--secondary-foreground: #eef2f1;
+	--muted: #1d2224;
+	--muted-foreground: #b0babd;
+	--accent: rgb(255 255 255 / 0.05);
+	--accent-foreground: #eef2f1;
+	--destructive: #ff7a71;
+	--destructive-foreground: #101418;
+	--border: rgb(255 255 255 / 0.07);
+	--input: rgb(255 255 255 / 0.1);
+	--ring: rgb(76 141 255 / 0.85);
+	--chart-1: #92bdf5;
+	--chart-2: #9be35a;
+	--chart-3: #ecc779;
+	--chart-4: #bfaaf4;
+	--chart-5: #f2a3b1;
+	--surface-elevated: #262b2e;
+	--sidebar: rgb(22 26 28 / 0.94);
+	--sidebar-foreground: #eef2f1;
+	--sidebar-primary: #4c8dff;
+	--sidebar-primary-foreground: #101418;
+	--sidebar-accent: rgb(255 255 255 / 0.05);
+	--sidebar-accent-foreground: #eef2f1;
+	--sidebar-border: rgb(255 255 255 / 0.07);
+	--sidebar-ring: rgb(76 141 255 / 0.85);
+	--font-sans:
+		"SF Pro Display", "SF Pro Text", "PingFang SC", -apple-system,
+		BlinkMacSystemFont, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+	--font-serif: Georgia, serif;
+	--font-mono:
+		ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+	--radius: 0.75rem;
+	--shadow-2xs: 0 1px 2px rgb(0 0 0 / 0.3);
+	--shadow-xs: 0 1px 2px rgb(0 0 0 / 0.3);
+	--shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3), 0 5px 14px rgb(0 0 0 / 0.2);
+	--shadow: 0 0 0 1px rgb(255 255 255 / 0.04), 0 1px 2px rgb(0 0 0 / 0.3);
+	--shadow-md: 0 1px 3px rgb(0 0 0 / 0.32), 0 12px 30px rgb(0 0 0 / 0.28);
+	--shadow-lg: 0 2px 6px rgb(0 0 0 / 0.36), 0 22px 50px rgb(0 0 0 / 0.42);
+	--shadow-xl: 0 2px 8px rgb(0 0 0 / 0.4), 0 28px 64px rgb(0 0 0 / 0.5);
+	--shadow-2xl: 0 4px 12px rgb(0 0 0 / 0.46), 0 40px 90px rgb(0 0 0 / 0.6);
+	--tracking-normal: 0em;
+	--spacing: 0.25rem;
+
+	--ink: #eef2f1;
+	--ink-muted: #b0babd;
+	--ink-soft: #8d979a;
+	--ink-faint: #6c7679;
+	--lime: #82dd2d;
+	--lime-text: #9be35a;
+	--red-text: #ff7a71;
+	--e1: 0 1px 2px rgb(0 0 0 / 0.3), 0 5px 14px rgb(0 0 0 / 0.2);
+	--e2: 0 1px 3px rgb(0 0 0 / 0.32), 0 12px 30px rgb(0 0 0 / 0.28);
+	--e3: 0 2px 6px rgb(0 0 0 / 0.36), 0 22px 50px rgb(0 0 0 / 0.42);
+	--line: rgb(255 255 255 / 0.07);
+	--line-strong: rgb(255 255 255 / 0.1);
+	--glass-line: rgb(255 255 255 / 0.1);
+	--hatch-ink: rgb(255 255 255 / 0.12);
+	--tick: rgb(255 255 255 / 0.16);
+	--tick-strong: rgb(255 255 255 / 0.42);
+	--plate-bg: rgb(8 10 11 / 0.78);
+	--plate-line: rgb(255 255 255 / 0.08);
+	--plate-ink: #eef2f1;
+	--plate-soft: rgb(255 255 255 / 0.6);
+	--cat-1-bg: rgb(232 190 96 / 0.16);
+	--cat-1-ink: #ecc779;
+	--cat-2-bg: rgb(100 160 240 / 0.16);
+	--cat-2-ink: #92bdf5;
+	--cat-3-bg: rgb(160 132 236 / 0.17);
+	--cat-3-ink: #bfaaf4;
+	--cat-4-bg: rgb(236 120 140 / 0.16);
+	--cat-4-ink: #f2a3b1;
+	--cat-5-bg: rgb(110 200 130 / 0.15);
+	--cat-5-ink: #94dca6;
+	--stage: #090b0c;
+	--frame: #000000;
+	--canvas: #121517;
+	--rail-bg: rgb(22 26 28 / 0.94);
+	--pill-bg: linear-gradient(
+		145deg,
+		rgb(255 255 255 / 0.11),
+		rgb(255 255 255 / 0.05)
+	);
+	--pill-inset: inset 0 -1px 0 rgb(0 0 0 / 0.2);
+	--float-bg: rgb(30 34 37 / 0.9);
+	--float-inset:
+		inset 0 0 0 1px rgb(255 255 255 / 0.04),
+		inset 0 1px 0 rgb(255 255 255 / 0.06);
+	--surface: linear-gradient(
+		145deg,
+		rgb(29 33 36 / 0.98),
+		rgb(25 29 31 / 0.96)
+	);
+	--surface-solid: #1b1f21;
+	--groove-bg: rgb(0 0 0 / 0.22);
+	--groove-inset: inset 0 1px 2px rgb(0 0 0 / 0.28);
+	--input-bg: rgb(255 255 255 / 0.04);
+	--hover-bg: rgb(255 255 255 / 0.05);
+	--press-bg: rgb(255 255 255 / 0.08);
+	--overlay: rgb(0 0 0 / 0.5);
+	--dark-surface: #090b0c;
+	--fs-display-xl: 56px;
+	--fs-display-l: 40px;
+	--fs-display-m: 28px;
+	--track-eyebrow: 0.14em;
+	--control-h: 36px;
+	--control-h-sm: 30px;
+	--row-h: 48px;
+	--cell-px: 16px;
+	--ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}

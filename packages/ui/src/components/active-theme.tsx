@@ -17,6 +17,7 @@ export const DEFAULT_THEME = "glass";
 
 export const THEMES = [
 	{ name: "Glass", value: "glass" },
+	{ name: "Pearl Glass", value: "pearl-glass" },
 	{ name: "Claude", value: "claude" },
 	{ name: "Neobrutualism", value: "neobrutualism" },
 	{ name: "Supabase", value: "supabase" },

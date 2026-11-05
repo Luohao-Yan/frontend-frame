@@ -11,6 +11,7 @@
 @import "./styles/themes/supabase.css";
 @import "./styles/themes/vercel.css";
 @import "./styles/themes/whatsapp.css";
+@import "./styles/themes/pearl-glass.css";
 @import "./styles/themes/zen.css";
 
 :root {
@@ -318,4 +319,180 @@
 
 @utility text-balance {
 	text-wrap: balance;
+}
+
+/* 动效运行时元素（lib/motion.ts 生成） */
+.ripple-clip {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	border-radius: inherit;
+	pointer-events: none;
+}
+
+.ripple-dot {
+	position: absolute;
+	border-radius: 50%;
+	background: currentColor;
+	opacity: 0.24;
+	transform-origin: 50% 50%;
+	pointer-events: none;
+}
+
+.morph-ghost {
+	position: fixed;
+	z-index: 60;
+	border-radius: 16px;
+	background: color-mix(in srgb, var(--card, #fbfcfc) 93%, transparent);
+	border: 1px solid var(--border, rgb(46 58 62 / 0.1));
+	box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+	pointer-events: none;
+}
+
+/* ── 珍珠玻璃仪器组件 ─────────────────────────────────────────── */
+
+/* Odometer：逐位滚动读数 */
+.odometer {
+	display: inline-flex;
+	line-height: 1.05;
+	overflow: hidden;
+	vertical-align: bottom;
+}
+
+.odo-cell {
+	display: inline-flex;
+	height: 1em;
+	overflow: hidden;
+	font-variant-numeric: tabular-nums;
+}
+
+.odo-strip {
+	display: grid;
+	transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: transform;
+}
+
+.odo-strip > span {
+	display: block;
+	height: 1em;
+	line-height: 1;
+}
+
+/* Metric：显示级读数字号（--fs-display-xl/l/m，其他主题回落） */
+.metric-xl {
+	font-size: var(--fs-display-xl, 56px);
+	line-height: 1.05;
+}
+
+.metric-l {
+	font-size: var(--fs-display-l, 40px);
+	line-height: 1.1;
+}
+
+.metric-m {
+	font-size: var(--fs-display-m, 28px);
+	line-height: 1.15;
+}
+
+.metric-s {
+	font-size: 24px;
+	line-height: 1.2;
+}
+
+/* Ruler：刻度尺（主/次刻度间距由组件内联传入） */
+.ruler {
+	height: 28px;
+}
+
+.ruler-ticks {
+	position: absolute;
+	inset: 0 0 12px;
+	background-image:
+		repeating-linear-gradient(
+			to right,
+			var(--tick, rgb(46 58 62 / 0.22)) 0 1px,
+			transparent 1px var(--ruler-minor-pct)
+		),
+		repeating-linear-gradient(
+			to right,
+			var(--tick-strong, rgb(46 58 62 / 0.5)) 0 1px,
+			transparent 1px var(--ruler-major-pct)
+		);
+}
+
+.ruler-labels {
+	position: absolute;
+	inset: 14px 0 0;
+}
+
+.ruler-labels > span {
+	position: absolute;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	font-size: 10px;
+	font-variant-numeric: tabular-nums;
+	color: var(--ink-faint, var(--muted-foreground, #99a2a5));
+}
+
+.ruler-marker {
+	position: absolute;
+	top: 0;
+	bottom: 12px;
+	width: 2px;
+	border-radius: 1px;
+	background: var(--primary, #236de9);
+	transform: translateX(-50%);
+}
+
+.ruler-marker-label {
+	position: absolute;
+	top: -18px;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	border-radius: 4px;
+	padding: 0 6px;
+	font-size: 10px;
+	line-height: 16px;
+	background: var(--primary, #236de9);
+	color: var(--primary-foreground, #ffffff);
+}
+
+/* SpecPlate：深色玻璃规格铭牌（浅/深主题都是深色面） */
+.spec-plate {
+	border: 1px solid var(--plate-line, rgb(255 255 255 / 0.1));
+	background: var(--plate-bg, rgb(21 24 26 / 0.9));
+	box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+	color: var(--plate-ink, #f2f5f4);
+}
+
+/* TickRing：刻度环 */
+.tick-ring svg {
+	display: block;
+}
+
+.ring-tick {
+	stroke: var(--tick, rgb(46 58 62 / 0.22));
+	stroke-width: 0.016;
+}
+
+.ring-tick.is-major {
+	stroke-width: 0.028;
+}
+
+.ring-tick.is-on {
+	stroke: var(--primary, #236de9);
+}
+
+.ring-cap {
+	fill: var(--primary, #236de9);
+}
+
+.tick-ring-center {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }

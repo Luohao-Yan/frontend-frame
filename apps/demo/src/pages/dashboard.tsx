@@ -41,6 +41,14 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
+	DeltaPill,
+	Metric,
+	Ruler,
+	SectionLabel,
+	SpecPlate,
+	TickRing,
+	usePageEnter,
+	useRevealCascade,
 } from "@frontend-frame/ui";
 
 import type { ChartConfig } from "@frontend-frame/ui";
@@ -145,43 +153,55 @@ const quickActions = [
 ];
 
 export function DashboardPage() {
-	return (
-		<div className="space-y-8">
-			<PageHeader
-				eyebrow="Overview"
-				title="统一前端工作台"
-				description="一个基于 React 19、Radix UI 与 Tailwind CSS v4 的组件框架示例。所有页面共享同一套设计令牌、交互规范与可访问性基线。"
-				actions={
-					<>
-						<Button variant="outline">
-							<DownloadIcon />
-							导出报告
-						</Button>
-						<Button>
-							<PlusIcon />
-							新建项目
-						</Button>
-					</>
-				}
-			/>
+	const pageRef = usePageEnter<HTMLDivElement>({ key: "dashboard" });
+	const instrumentsRef = useRevealCascade<HTMLDivElement>(
+		true,
+		":scope > *",
+		0.09,
+	);
 
-			<Alert className="border-indigo-500/25 bg-gradient-to-r from-indigo-500/10 via-violet-500/5 to-transparent">
-				<SparklesIcon className="text-indigo-500" />
-				<AlertTitle>组件库 v0.1.0 已发布</AlertTitle>
-				<AlertDescription className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-					<span>
-						新增 DataTable、PageHeader、StatCard
-						与主题切换能力，可直接复用到业务应用。
-					</span>
-					<Button variant="link" className="h-auto p-0">
-						查看变更
-						<ArrowRightIcon className="size-3.5" />
-					</Button>
-				</AlertDescription>
-			</Alert>
+	return (
+		<div ref={pageRef} className="space-y-8">
+			<div className="reveal">
+				<PageHeader
+					eyebrow="Overview"
+					title="统一前端工作台"
+					description="一个基于 React 19、Radix UI 与 Tailwind CSS v4 的组件框架示例。所有页面共享同一套设计令牌、交互规范与可访问性基线。"
+					actions={
+						<>
+							<Button variant="outline">
+								<DownloadIcon />
+								导出报告
+							</Button>
+							<Button>
+								<PlusIcon />
+								新建项目
+							</Button>
+						</>
+					}
+				/>
+			</div>
+
+			<div className="reveal">
+				<Alert className="border-indigo-500/25 bg-gradient-to-r from-indigo-500/10 via-violet-500/5 to-transparent">
+					<SparklesIcon className="text-indigo-500" />
+					<AlertTitle>组件库 v0.1.0 已发布</AlertTitle>
+					<AlertDescription className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+						<span>
+							新增 DataTable、PageHeader、StatCard
+							与主题切换能力，可直接复用到业务应用。
+						</span>
+						<Button variant="link" className="h-auto p-0">
+							查看变更
+							<ArrowRightIcon className="size-3.5" />
+						</Button>
+					</AlertDescription>
+				</Alert>
+			</div>
 
 			<div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
 				<StatCard
+					className="bento"
 					title="总请求量"
 					value="1.28M"
 					delta={12.6}
@@ -191,6 +211,7 @@ export function DashboardPage() {
 					trend={[12, 18, 15, 24, 22, 31, 28, 38, 42, 48]}
 				/>
 				<StatCard
+					className="bento"
 					title="活跃用户"
 					value="18,420"
 					delta={8.2}
@@ -200,6 +221,7 @@ export function DashboardPage() {
 					trend={[8, 10, 9, 13, 15, 14, 18, 20, 19, 24]}
 				/>
 				<StatCard
+					className="bento"
 					title="平均延迟"
 					value="642ms"
 					delta={-4.8}
@@ -209,6 +231,7 @@ export function DashboardPage() {
 					trend={[20, 18, 19, 16, 17, 14, 15, 12, 13, 11]}
 				/>
 				<StatCard
+					className="bento"
 					title="本月成本"
 					value="$4,860"
 					delta={6.4}
@@ -219,8 +242,72 @@ export function DashboardPage() {
 				/>
 			</div>
 
+			{/* 珍珠玻璃仪器：读数 / 刻度环 / 刻度尺（移植自 scaffold-master） */}
+			<div ref={instrumentsRef} className="grid gap-4 xl:grid-cols-3">
+				<Card>
+					<CardHeader>
+						<SectionLabel title="实时脉搏" />
+					</CardHeader>
+					<CardContent className="space-y-4">
+						<div className="flex items-end justify-between gap-4">
+							<Metric value={1280000} size="xl" label="总请求量" />
+							<DeltaPill value={12.6} label="较上期" />
+						</div>
+						<Separator />
+						<div className="flex items-end justify-between gap-4">
+							<Metric
+								value={96.4}
+								decimals={1}
+								unit="%"
+								size="l"
+								label="成功率"
+							/>
+							<DeltaPill fresh label="新增能力" />
+						</div>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<SectionLabel title="操作成功率" />
+					</CardHeader>
+					<CardContent className="flex flex-col items-center gap-4">
+						<TickRing value={96.4} label="成功" />
+						<SpecPlate
+							title="运行规格"
+							rows={[
+								{ label: "操作", value: "12,840 次" },
+								{ label: "成功率", value: "96.4%" },
+								{ label: "峰值并发", value: "1,024" },
+								{ label: "状态", value: "正常", tone: "lime" },
+							]}
+						/>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<SectionLabel title="容量区间" />
+					</CardHeader>
+					<CardContent className="space-y-6">
+						<Ruler
+							labels={["0", "50", "100", "150", "200"]}
+							marker={0.72}
+							markerLabel="144 GB"
+						/>
+						<SpecPlate
+							title="存储规格"
+							rows={[
+								{ label: "已用", value: "144 GB" },
+								{ label: "剩余", value: "32 GB" },
+								{ label: "冗余", value: "3 副本", tone: "lime" },
+								{ label: "告警线", value: "170 GB", tone: "red" },
+							]}
+						/>
+					</CardContent>
+				</Card>
+			</div>
+
 			<div className="grid gap-4 lg:grid-cols-7">
-				<Card className="lg:col-span-4">
+				<Card className="bento lg:col-span-4">
 					<CardHeader>
 						<CardTitle>请求趋势</CardTitle>
 						<CardDescription>最近 14 天的请求量与错误量变化</CardDescription>
@@ -288,7 +375,7 @@ export function DashboardPage() {
 					</CardFooter>
 				</Card>
 
-				<Card className="lg:col-span-3">
+				<Card className="bento lg:col-span-3">
 					<CardHeader>
 						<CardTitle>框架迁移进度</CardTitle>
 						<CardDescription>业务应用接入统一组件库的完成度</CardDescription>
@@ -334,7 +421,7 @@ export function DashboardPage() {
 			</div>
 
 			<div className="grid gap-4 lg:grid-cols-7">
-				<Card className="lg:col-span-4">
+				<Card className="bento lg:col-span-4">
 					<CardHeader>
 						<CardTitle>最近请求</CardTitle>
 						<CardDescription>跨模型、跨团队的实时调用记录</CardDescription>
@@ -385,7 +472,7 @@ export function DashboardPage() {
 					</CardContent>
 				</Card>
 
-				<Card className="lg:col-span-3">
+				<Card className="bento lg:col-span-3">
 					<CardHeader>
 						<CardTitle>团队动态</CardTitle>
 						<CardDescription>本周协作成员</CardDescription>
@@ -424,7 +511,7 @@ export function DashboardPage() {
 					<button
 						key={action.title}
 						type="button"
-						className="bg-card hover:border-foreground/20 group flex items-center gap-3 rounded-xl border p-4 text-left shadow-sm transition-colors"
+						className="bento lift bg-card hover:border-foreground/20 group flex items-center gap-3 rounded-xl border p-4 text-left shadow-sm transition-colors"
 					>
 						<div className="bg-muted group-hover:bg-primary group-hover:text-primary-foreground rounded-lg p-2.5 transition-colors">
 							<action.icon className="size-4" />

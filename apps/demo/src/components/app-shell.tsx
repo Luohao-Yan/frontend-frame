@@ -38,6 +38,7 @@ import {
 	ThemeSelector,
 	ThemeToggle,
 	cn,
+	useMotionEffects,
 } from "@frontend-frame/ui";
 
 import { RouteFallback } from "@/components/route-fallback";
@@ -133,6 +134,7 @@ function WorkspaceMenu({ collapsed }: { collapsed: boolean }) {
 }
 
 export function AppShell() {
+	useMotionEffects();
 	const [commandOpen, setCommandOpen] = React.useState(false);
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const location = useLocation();
