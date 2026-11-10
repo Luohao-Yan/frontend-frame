@@ -7,12 +7,15 @@
 	"scripts": {
 		"dev": "pnpm --filter @frontend-frame/demo dev",
 		"build": "pnpm -r build",
-		"typecheck": "pnpm -r typecheck",
+		"typecheck": "pnpm -r typecheck && pnpm typecheck:visual",
+		"typecheck:visual": "tsc -p tsconfig.visual.json --noEmit",
 		"preview": "pnpm --filter @frontend-frame/demo preview",
 		"format": "prettier --write .",
 		"lint": "eslint . --max-warnings 0",
 		"test": "vitest run",
 		"test:watch": "vitest",
+		"test:visual": "playwright test",
+		"test:visual:update": "playwright test --update-snapshots",
 		"changeset": "changeset",
 		"version-packages": "changeset version",
 		"prepare": "husky"
@@ -27,8 +30,10 @@
 		]
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.14.0",
 		"@changesets/cli": "^3.0.3",
 		"@eslint/js": "^10.0.1",
+		"@playwright/test": "^1.65.0",
 		"@testing-library/jest-dom": "^7.0.1",
 		"@testing-library/react": "^16.3.3",
 		"@testing-library/user-event": "^14.6.8",

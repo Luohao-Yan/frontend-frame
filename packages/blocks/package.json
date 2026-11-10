@@ -1,0 +1,99 @@
+{
+	"name": "@frontend-frame/blocks",
+	"version": "0.1.0",
+	"description": "Composable page blocks with interchangeable variants",
+	"license": "UNLICENSED",
+	"type": "module",
+	"sideEffects": [
+		"**/*.css"
+	],
+	"files": [
+		"dist"
+	],
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"development": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./catalog": {
+			"development": "./src/catalog.ts",
+			"types": "./dist/catalog.d.ts",
+			"import": "./dist/catalog.js"
+		},
+		"./header/floating-pill": {
+			"development": "./src/header/floating-pill.tsx",
+			"types": "./dist/header/floating-pill.d.ts",
+			"import": "./dist/header/floating-pill.js"
+		},
+		"./header/minimal": {
+			"development": "./src/header/minimal.tsx",
+			"types": "./dist/header/minimal.d.ts",
+			"import": "./dist/header/minimal.js"
+		},
+		"./header/mega-menu": {
+			"development": "./src/header/mega-menu.tsx",
+			"types": "./dist/header/mega-menu.d.ts",
+			"import": "./dist/header/mega-menu.js"
+		},
+		"./hero/centered": {
+			"development": "./src/hero/centered.tsx",
+			"types": "./dist/hero/centered.d.ts",
+			"import": "./dist/hero/centered.js"
+		},
+		"./hero/split": {
+			"development": "./src/hero/split.tsx",
+			"types": "./dist/hero/split.d.ts",
+			"import": "./dist/hero/split.js"
+		},
+		"./hero/bento": {
+			"development": "./src/hero/bento.tsx",
+			"types": "./dist/hero/bento.d.ts",
+			"import": "./dist/hero/bento.js"
+		},
+		"./footer/dark-mega": {
+			"development": "./src/footer/dark-mega.tsx",
+			"types": "./dist/footer/dark-mega.d.ts",
+			"import": "./dist/footer/dark-mega.js"
+		},
+		"./footer/minimal": {
+			"development": "./src/footer/minimal.tsx",
+			"types": "./dist/footer/minimal.d.ts",
+			"import": "./dist/footer/minimal.js"
+		},
+		"./pricing/cards": {
+			"development": "./src/pricing/cards.tsx",
+			"types": "./dist/pricing/cards.d.ts",
+			"import": "./dist/pricing/cards.js"
+		},
+		"./pricing/comparison": {
+			"development": "./src/pricing/comparison.tsx",
+			"types": "./dist/pricing/comparison.d.ts",
+			"import": "./dist/pricing/comparison.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "rm -rf dist && vite build && tsc -p tsconfig.build.json",
+		"dev": "vite build --watch",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@frontend-frame/app-kit": "workspace:*",
+		"@frontend-frame/ui": "workspace:*",
+		"lucide-react": "^0.548.0"
+	},
+	"peerDependencies": {
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
+	},
+	"devDependencies": {
+		"@frontend-frame/build-config": "workspace:*",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"vite": "^7.3.7"
+	}
+}

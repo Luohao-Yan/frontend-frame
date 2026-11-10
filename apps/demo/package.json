@@ -12,6 +12,11 @@
 	"dependencies": {
 		"@fontsource-variable/geist-mono": "^5.2.8",
 		"@fontsource-variable/inter": "^5.2.8",
+		"@hookform/resolvers": "^5.2.2",
+		"@frontend-frame/app-kit": "workspace:*",
+		"@frontend-frame/blocks": "workspace:*",
+		"@frontend-frame/forms": "workspace:*",
+		"@frontend-frame/product-ui": "workspace:*",
 		"@frontend-frame/ui": "workspace:*",
 		"@tanstack/react-table": "^8.21.3",
 		"lucide-react": "^0.548.0",
@@ -20,7 +25,8 @@
 		"react-hook-form": "^7.65.0",
 		"react-router-dom": "^7.9.4",
 		"recharts": "^2.15.4",
-		"sonner": "^2.0.7"
+		"sonner": "^2.0.7",
+		"zod": "^4.1.12"
 	},
 	"devDependencies": {
 		"@tailwindcss/vite": "^4.1.16",

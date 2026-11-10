@@ -11,3 +11,7 @@ dist/
 *.log
 coverage/
 .husky/_/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/

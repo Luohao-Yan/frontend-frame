@@ -1,0 +1,34 @@
+"use client";
+
+import { cn } from "../lib/utils";
+
+export interface DashedLineProps {
+	orientation?: "horizontal" | "vertical";
+	className?: string;
+}
+
+export function DashedLine({
+	orientation = "horizontal",
+	className,
+}: DashedLineProps) {
+	const horizontal = orientation === "horizontal";
+
+	return (
+		<div
+			className={cn(
+				"text-muted-foreground relative",
+				horizontal ? "h-px w-full" : "h-full w-px",
+				className,
+			)}
+			aria-hidden="true"
+		>
+			<div
+				className={cn(
+					horizontal
+						? "h-px w-full bg-[repeating-linear-gradient(90deg,transparent,transparent_4px,currentColor_4px,currentColor_10px)] [mask-image:linear-gradient(90deg,transparent,black_25%,black_75%,transparent)]"
+						: "h-full w-px bg-[repeating-linear-gradient(180deg,transparent,transparent_4px,currentColor_4px,currentColor_10px)] [mask-image:linear-gradient(180deg,transparent,black_25%,black_75%,transparent)]",
+				)}
+			/>
+		</div>
+	);
+}

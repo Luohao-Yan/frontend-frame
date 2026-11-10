@@ -1,0 +1,14 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"noEmit": true,
+		"baseUrl": ".",
+		"paths": {
+			"@frontend-frame/ui": ["../ui/src/index.ts"],
+			"@frontend-frame/ui/*": ["../ui/src/*"]
+		},
+		"types": ["node", "vite/client"]
+	},
+	"include": ["src", "vite.config.ts"],
+	"exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/**/__tests__/**"]
+}

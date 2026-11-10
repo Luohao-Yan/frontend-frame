@@ -11,7 +11,7 @@ interface ThemeContextValue {
 	setTheme: (theme: Theme) => void;
 }
 
-const STORAGE_KEY = "frontend-frame-theme";
+export const THEME_STORAGE_KEY = "frontend-frame-theme";
 
 const ThemeContext = React.createContext<ThemeContextValue | null>(null);
 
@@ -24,18 +24,32 @@ function getSystemTheme(): ResolvedTheme {
 		: "light";
 }
 
-function getStoredTheme(): Theme {
+function getStoredTheme(storageKey: string, defaultTheme: Theme): Theme {
 	if (typeof window === "undefined") {
-		return "system";
+		return defaultTheme;
 	}
-	const stored = window.localStorage.getItem(STORAGE_KEY);
+	const stored = window.localStorage.getItem(storageKey);
 	return stored === "light" || stored === "dark" || stored === "system"
 		? stored
-		: "system";
+		: defaultTheme;
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-	const [theme, setThemeState] = React.useState<Theme>(getStoredTheme);
+export interface ThemeProviderProps {
+	children: React.ReactNode;
+	storageKey?: string;
+	defaultTheme?: Theme;
+	disableTransitionOnChange?: boolean;
+}
+
+export function ThemeProvider({
+	children,
+	storageKey = THEME_STORAGE_KEY,
+	defaultTheme = "system",
+	disableTransitionOnChange = false,
+}: ThemeProviderProps) {
+	const [theme, setThemeState] = React.useState<Theme>(() =>
+		getStoredTheme(storageKey, defaultTheme),
+	);
 	const [systemTheme, setSystemTheme] =
 		React.useState<ResolvedTheme>(getSystemTheme);
 
@@ -50,14 +64,27 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 	React.useEffect(() => {
 		const root = document.documentElement;
+		if (disableTransitionOnChange) {
+			root.setAttribute("data-theme-changing", "");
+		}
 		root.classList.toggle("dark", resolvedTheme === "dark");
 		root.style.colorScheme = resolvedTheme;
-	}, [resolvedTheme]);
+		if (!disableTransitionOnChange) {
+			return;
+		}
+		const frame = requestAnimationFrame(() => {
+			root.removeAttribute("data-theme-changing");
+		});
+		return () => cancelAnimationFrame(frame);
+	}, [disableTransitionOnChange, resolvedTheme]);
 
-	const setTheme = React.useCallback((nextTheme: Theme) => {
-		window.localStorage.setItem(STORAGE_KEY, nextTheme);
-		setThemeState(nextTheme);
-	}, []);
+	const setTheme = React.useCallback(
+		(nextTheme: Theme) => {
+			window.localStorage.setItem(storageKey, nextTheme);
+			setThemeState(nextTheme);
+		},
+		[storageKey],
+	);
 
 	const value = React.useMemo(
 		() => ({ theme, resolvedTheme, setTheme }),

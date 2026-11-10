@@ -2,6 +2,9 @@
 @import "@frontend-frame/ui/styles.css";
 
 @source "../../../packages/ui/src/**/*.{ts,tsx}";
+@source "../../../packages/app-kit/src/**/*.{ts,tsx}";
+@source "../../../packages/blocks/src/**/*.{ts,tsx}";
+@source "../../../packages/product-ui/src/**/*.{ts,tsx}";
 @source "../index.html";
 
 @plugin "tailwindcss-animate";

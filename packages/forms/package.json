@@ -1,0 +1,59 @@
+{
+	"name": "@frontend-frame/forms",
+	"version": "0.1.0",
+	"description": "Framework-agnostic form schemas, actions, and submission state",
+	"license": "UNLICENSED",
+	"type": "module",
+	"sideEffects": false,
+	"files": [
+		"dist"
+	],
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"development": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./create-action": {
+			"development": "./src/create-action.ts",
+			"types": "./dist/create-action.d.ts",
+			"import": "./dist/create-action.js"
+		},
+		"./use-action": {
+			"development": "./src/use-action.ts",
+			"types": "./dist/use-action.d.ts",
+			"import": "./dist/use-action.js"
+		},
+		"./apply-field-errors": {
+			"development": "./src/apply-field-errors.ts",
+			"types": "./dist/apply-field-errors.d.ts",
+			"import": "./dist/apply-field-errors.js"
+		},
+		"./create-fetch-action": {
+			"development": "./src/create-fetch-action.ts",
+			"types": "./dist/create-fetch-action.d.ts",
+			"import": "./dist/create-fetch-action.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "rm -rf dist && vite build && tsc -p tsconfig.build.json",
+		"dev": "vite build --watch",
+		"typecheck": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"react": "^19.0.0",
+		"react-hook-form": "^7.65.0",
+		"zod": "^4.1.0"
+	},
+	"devDependencies": {
+		"@frontend-frame/build-config": "workspace:*",
+		"@types/react": "^19.3.0",
+		"react-hook-form": "^7.65.0",
+		"vite": "^7.3.7",
+		"zod": "^4.1.12"
+	}
+}

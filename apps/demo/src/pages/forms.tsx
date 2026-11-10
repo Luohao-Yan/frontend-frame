@@ -43,6 +43,7 @@ import {
 	Textarea,
 } from "@frontend-frame/ui";
 
+import { ContactForm } from "@/components/contact-form";
 import { CodeBlock, Section } from "@/components/showcase";
 
 interface ProfileFormValues {
@@ -382,6 +383,17 @@ export function FormsPage() {
 					</Card>
 				</div>
 			</div>
+
+			<Section
+				title="真实提交链路"
+				description="Zod 客户端校验 + createAction 服务端校验 + useAction 提交状态 + applyFieldErrors 字段回填。输入 @blocked.test 可验证服务端字段错误。"
+			>
+				<Card>
+					<CardContent className="p-6">
+						<ContactForm />
+					</CardContent>
+				</Card>
+			</Section>
 
 			<Section
 				title="代码示例"

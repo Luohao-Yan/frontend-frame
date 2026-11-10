@@ -28,6 +28,27 @@ if (!(globalThis as { ResizeObserver?: unknown }).ResizeObserver) {
 		ResizeObserverMock;
 }
 
+class IntersectionObserverMock {
+	readonly root = null;
+	readonly rootMargin = "";
+	readonly thresholds = [];
+
+	observe() {}
+	unobserve() {}
+	disconnect() {}
+	takeRecords() {
+		return [];
+	}
+}
+
+if (!(globalThis as { IntersectionObserver?: unknown }).IntersectionObserver) {
+	(
+		globalThis as {
+			IntersectionObserver: typeof IntersectionObserverMock;
+		}
+	).IntersectionObserver = IntersectionObserverMock;
+}
+
 if (!window.getComputedStyle) {
 	Object.defineProperty(window, "getComputedStyle", {
 		value: () => ({

@@ -1,0 +1,50 @@
+{
+	"name": "@frontend-frame/app-kit",
+	"version": "0.1.0",
+	"description": "Framework-agnostic application primitives for frontend-frame",
+	"license": "UNLICENSED",
+	"type": "module",
+	"sideEffects": false,
+	"files": [
+		"dist"
+	],
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"development": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./adapters": {
+			"development": "./src/adapters/ui-adapters.tsx",
+			"types": "./dist/adapters/ui-adapters.d.ts",
+			"import": "./dist/adapters/ui-adapters.js"
+		},
+		"./shell": {
+			"development": "./src/shell/index.ts",
+			"types": "./dist/shell/index.d.ts",
+			"import": "./dist/shell/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "rm -rf dist && vite build && tsc -p tsconfig.build.json",
+		"dev": "vite build --watch",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@frontend-frame/ui": "workspace:*"
+	},
+	"peerDependencies": {
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
+	},
+	"devDependencies": {
+		"@frontend-frame/build-config": "workspace:*",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"vite": "^7.3.7"
+	}
+}

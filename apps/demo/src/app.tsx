@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { AppShell } from "@/components/app-shell";
+import { NotFoundPage } from "@/pages/not-found";
 
 const DashboardPage = React.lazy(() =>
 	import("@/pages/dashboard").then((module) => ({
@@ -30,10 +31,33 @@ const TokensPage = React.lazy(() =>
 const DocsPage = React.lazy(() =>
 	import("@/pages/docs").then((module) => ({ default: module.DocsPage })),
 );
+const VariantsPage = React.lazy(() =>
+	import("@/pages/variants").then((module) => ({
+		default: module.VariantsPage,
+	})),
+);
+const ProductUiPage = React.lazy(() =>
+	import("@/pages/product-ui").then((module) => ({
+		default: module.ProductUiPage,
+	})),
+);
+const LoginPage = React.lazy(() =>
+	import("@/pages/login").then((module) => ({
+		default: module.LoginPage,
+	})),
+);
 
 export function App() {
 	return (
 		<Routes>
+			<Route
+				path="login"
+				element={
+					<React.Suspense fallback={null}>
+						<LoginPage />
+					</React.Suspense>
+				}
+			/>
 			<Route element={<AppShell />}>
 				<Route index element={<DashboardPage />} />
 				<Route path="components" element={<ComponentsPage />} />
@@ -41,8 +65,10 @@ export function App() {
 				<Route path="data" element={<DataPage />} />
 				<Route path="ai" element={<AiComponentsPage />} />
 				<Route path="tokens" element={<TokensPage />} />
+				<Route path="variants" element={<VariantsPage />} />
+				<Route path="product-ui" element={<ProductUiPage />} />
 				<Route path="docs" element={<DocsPage />} />
-				<Route path="*" element={<Navigate to="/" replace />} />
+				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 		</Routes>
 	);

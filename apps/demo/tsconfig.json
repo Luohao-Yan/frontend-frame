@@ -5,10 +5,18 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"],
+			"@frontend-frame/app-kit": ["../../packages/app-kit/src/index.ts"],
+			"@frontend-frame/app-kit/*": ["../../packages/app-kit/src/*"],
+			"@frontend-frame/blocks": ["../../packages/blocks/src/index.ts"],
+			"@frontend-frame/blocks/*": ["../../packages/blocks/src/*"],
+			"@frontend-frame/forms": ["../../packages/forms/src/index.ts"],
+			"@frontend-frame/forms/*": ["../../packages/forms/src/*"],
+			"@frontend-frame/product-ui": ["../../packages/product-ui/src/index.ts"],
+			"@frontend-frame/product-ui/*": ["../../packages/product-ui/src/*"],
 			"@frontend-frame/ui": ["../../packages/ui/src/index.ts"],
 			"@frontend-frame/ui/*": ["../../packages/ui/src/*"]
 		},
-		"types": ["node", "vite/client"]
+		"types": ["node", "vite/client", "@testing-library/jest-dom"]
 	},
 	"include": ["src", "vite.config.ts"]
 }

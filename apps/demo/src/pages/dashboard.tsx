@@ -4,12 +4,14 @@ import {
 	CreditCardIcon,
 	DatabaseIcon,
 	DownloadIcon,
+	LogInIcon,
 	PlusIcon,
 	ShieldCheckIcon,
 	SparklesIcon,
 	UsersIcon,
 	ZapIcon,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import {
@@ -169,6 +171,12 @@ export function DashboardPage() {
 					description="一个基于 React 19、Radix UI 与 Tailwind CSS v4 的组件框架示例。所有页面共享同一套设计令牌、交互规范与可访问性基线。"
 					actions={
 						<>
+							<Button variant="outline" asChild>
+								<Link to="/login">
+									<LogInIcon />
+									查看登录页
+								</Link>
+							</Button>
 							<Button variant="outline">
 								<DownloadIcon />
 								导出报告

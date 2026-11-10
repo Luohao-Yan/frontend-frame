@@ -4,6 +4,9 @@ import {
 	BookOpen,
 	ClipboardPen,
 	LayoutDashboard,
+	LayoutTemplate,
+	LogInIcon,
+	PanelsTopLeft,
 	Palette,
 	Table2,
 } from "lucide-react";
@@ -31,6 +34,24 @@ export const navGroups: NavGroup[] = [
 			{ title: "表单示例", href: "/forms", icon: ClipboardPen },
 			{ title: "数据表格", href: "/data", icon: Table2 },
 			{ title: "AI 组件", href: "/ai", icon: BotIcon, badge: "Morphic" },
+			{
+				title: "组件变体",
+				href: "/variants",
+				icon: LayoutTemplate,
+				badge: "10",
+			},
+			{
+				title: "产品 UI",
+				href: "/product-ui",
+				icon: PanelsTopLeft,
+				badge: "New",
+			},
+			{
+				title: "登录页",
+				href: "/login",
+				icon: LogInIcon,
+				badge: "New",
+			},
 		],
 	},
 	{

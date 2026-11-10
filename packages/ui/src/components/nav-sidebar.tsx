@@ -79,6 +79,10 @@ export interface NavSidebarProps extends Omit<
 	showSearch?: boolean;
 	showCollapseButton?: boolean;
 	showMobileClose?: boolean;
+	/** 是否渲染桌面侧栏；false 时仅保留移动端抽屉。 */
+	desktop?: boolean;
+	/** 是否填满父容器高度；适合 fixed app shell。 */
+	fill?: boolean;
 	expandLabel?: string;
 	collapseLabel?: string;
 	closeLabel?: string;
@@ -255,6 +259,8 @@ export function NavSidebar({
 	showSearch = true,
 	showCollapseButton = true,
 	showMobileClose = true,
+	desktop = true,
+	fill = false,
 	expandLabel = "展开侧边栏",
 	collapseLabel = "折叠侧边栏",
 	closeLabel = "关闭菜单",
@@ -662,32 +668,39 @@ export function NavSidebar({
 
 	return (
 		<TooltipProvider delayDuration={120}>
-			<aside
-				data-slot="nav-sidebar"
-				className={cn(
-					"relative hidden shrink-0 p-2 transition-[width] duration-200 lg:block",
-					className,
-				)}
-				style={{ width: collapsed ? collapsedWidth : width }}
-				{...props}
-			>
-				<div className="sticky top-2 h-[calc(100svh-1rem)]">
-					{renderContent(collapsed)}
-				</div>
-				<button
-					type="button"
-					tabIndex={-1}
-					aria-label={collapsed ? expandLabel : collapseLabel}
-					title={collapsed ? expandLabel : collapseLabel}
-					onClick={() => updateCollapsed(!collapsed)}
+			{desktop ? (
+				<aside
+					data-slot="nav-sidebar"
 					className={cn(
-						"absolute inset-y-0 right-0 z-20 hidden w-3 translate-x-1/2 cursor-w-resize lg:block",
-						"after:bg-transparent after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 after:-translate-x-1/2 after:transition-colors",
-						"hover:after:bg-sidebar-border",
-						collapsed && "cursor-e-resize",
+						"relative hidden shrink-0 p-2 lg:block",
+						fill && "h-full",
+						className,
 					)}
-				/>
-			</aside>
+					style={{ width: collapsed ? collapsedWidth : width }}
+					{...props}
+				>
+					<div
+						className={cn(
+							fill ? "h-full" : "sticky top-2 h-[calc(100svh-1rem)]",
+						)}
+					>
+						{renderContent(collapsed)}
+					</div>
+					<button
+						type="button"
+						tabIndex={-1}
+						aria-label={collapsed ? expandLabel : collapseLabel}
+						title={collapsed ? expandLabel : collapseLabel}
+						onClick={() => updateCollapsed(!collapsed)}
+						className={cn(
+							"absolute inset-y-0 right-0 z-20 hidden w-3 translate-x-1/2 cursor-w-resize lg:block",
+							"after:bg-transparent after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 after:-translate-x-1/2 after:transition-colors",
+							"hover:after:bg-sidebar-border",
+							collapsed && "cursor-e-resize",
+						)}
+					/>
+				</aside>
+			) : null}
 
 			<div
 				className={cn(

@@ -21,6 +21,10 @@
 						window.matchMedia("(prefers-color-scheme: dark)").matches);
 				document.documentElement.classList.toggle("dark", dark);
 				document.documentElement.style.colorScheme = dark ? "dark" : "light";
+				var activeTheme = localStorage.getItem("frontend-frame-active-theme");
+				if (activeTheme) {
+					document.documentElement.setAttribute("data-theme", activeTheme);
+				}
 			})();
 		</script>
 	</head>
