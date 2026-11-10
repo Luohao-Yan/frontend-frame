@@ -441,9 +441,17 @@ export function AppShell() {
 			name: "Frontend Frame",
 			description: "统一前端 UI 框架",
 			logo: { text: "Frontend Frame" },
-			nav: navItems.map((item) => ({
-				label: item.title,
-				href: item.href,
+			nav: navGroups.map((group) => ({
+				label: group.label,
+				href: group.items[0]?.href ?? "/",
+				children: group.items.map((item) => ({
+					label: item.title,
+					href: item.href,
+					description:
+						item.badge && /^\d+$/.test(item.badge)
+							? `${item.badge} 个组件`
+							: undefined,
+				})),
 			})),
 		}),
 		[],

@@ -49,6 +49,27 @@ test("shell switches between sidebar and topbar without document overflow", asyn
 
 	await expect(page.locator("header.fixed")).toBeVisible();
 	await expect(page).toHaveURL(/shell=topbar/);
+	if (testInfo.project.name === "light-desktop") {
+		await expect(
+			page.locator("header.fixed nav").getByRole("button", { name: "应用" }),
+		).toBeVisible();
+		await expect(
+			page
+				.locator("header.fixed nav")
+				.getByRole("button", { name: "设计系统" }),
+		).toBeVisible();
+
+		const navMetrics = await page
+			.locator("header.fixed nav a, header.fixed nav button")
+			.evaluateAll((items) =>
+				items.map((item) => ({
+					height: item.getBoundingClientRect().height,
+					whiteSpace: getComputedStyle(item).whiteSpace,
+				})),
+			);
+		expect(navMetrics.every((item) => item.height <= 44)).toBe(true);
+		expect(navMetrics.every((item) => item.whiteSpace === "nowrap")).toBe(true);
+	}
 
 	const topbarMetrics = await page.evaluate(() => ({
 		documentScrollWidth: document.documentElement.scrollWidth,

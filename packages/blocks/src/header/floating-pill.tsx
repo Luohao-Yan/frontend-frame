@@ -57,7 +57,7 @@ export function FloatingPillHeader({
 					className="hidden lg:flex [&_a]:rounded-full [&_button]:rounded-full"
 				/>
 
-				<div className="flex items-center gap-1.5 [&_[data-slot=button]]:rounded-full">
+				<div className="flex shrink-0 items-center gap-1.5 [&_[data-slot=button]]:rounded-full">
 					{themeToggle}
 					<HeaderActions
 						site={site}

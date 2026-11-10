@@ -31,9 +31,14 @@ export function HeaderNavLinks({
 	const currentPath = useCurrentPath(activePath);
 
 	return (
-		<nav aria-label="主导航" className={cn("items-center gap-1", className)}>
+		<nav
+			aria-label="主导航"
+			className={cn("shrink-0 items-center gap-1", className)}
+		>
 			{site.nav.map((item) => {
-				const active = isActivePath(currentPath, item.href);
+				const active = item.children?.length
+					? item.children.some((child) => isActivePath(currentPath, child.href))
+					: isActivePath(currentPath, item.href);
 
 				if (item.children?.length) {
 					return (
@@ -42,7 +47,7 @@ export function HeaderNavLinks({
 								<button
 									type="button"
 									className={cn(
-										"text-muted-foreground hover:text-foreground inline-flex h-9 items-center gap-1 rounded-md px-3 text-sm font-medium transition-colors",
+										"text-muted-foreground hover:text-foreground inline-flex h-9 shrink-0 items-center gap-1 rounded-md px-3 text-sm font-medium whitespace-nowrap transition-colors",
 										active && "text-foreground",
 									)}
 								>
@@ -79,7 +84,7 @@ export function HeaderNavLinks({
 						aria-current={active ? "page" : undefined}
 						onClick={() => onNavigate?.(item.href)}
 						className={cn(
-							"text-muted-foreground hover:text-foreground inline-flex h-9 items-center rounded-md px-3 text-sm font-medium transition-colors",
+							"text-muted-foreground hover:text-foreground inline-flex h-9 shrink-0 items-center rounded-md px-3 text-sm font-medium whitespace-nowrap transition-colors",
 							active && "text-foreground",
 						)}
 					>
